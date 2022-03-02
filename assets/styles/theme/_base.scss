@@ -10,8 +10,34 @@ h3 {
 h1, h2, h3, h4 {
     font-family: $fugaz;
 }
+p {
+    font-size: $pmobile;
+}
+body {
+    background-color: $white;
+}
+.container {
+    max-width: 1280px;
+    margin-left: auto;
+    margin-right: auto;
+    padding: 1.5rem;
+}
 
-@media screen and (min-width: 996px) {
+@media screen and (min-width: 900px) {
+    h1 { 
+        font-size: $h1tablette;
+    }
+    h2 {
+        font-size: $h2tablette;
+    }
+    h3 {
+        font-size: $h3tablette;
+    }
+    p {
+        font-size: $ptablette;
+    }
+}
+@media screen and (min-width: 1200px) {
     h1 { 
         font-size: $h1;
     }
@@ -20,5 +46,8 @@ h1, h2, h3, h4 {
     }
     h3 {
         font-size: $h3;
+    }
+    p {
+        font-size: $p;
     }
 }

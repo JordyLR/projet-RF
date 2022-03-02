@@ -9,6 +9,7 @@ use Doctrine\ORM\Mapping as ORM;
 
 /**
  * @ORM\Entity(repositoryClass=ArticleRepository::class)
+ * @ORM\HasLifecycleCallbacks()
  */
 class Article
 {
@@ -105,12 +106,20 @@ class Article
     {
         return $this->created_at;
     }
-
+    
     public function setCreatedAt(\DateTimeImmutable $created_at): self
     {
         $this->created_at = $created_at;
 
         return $this;
+    }
+
+    /**
+    * @ORM\PrePersist
+    */
+    public function setCreatedAtValue()
+    {
+        $this->created_at = new \DateTimeImmutable();
     }
 
     public function getContent(): ?string

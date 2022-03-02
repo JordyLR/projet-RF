@@ -2,12 +2,11 @@
     background-color: $white;
     color: $primary;
     border-bottom: $primary solid 2px;
-    padding: 0 2.5rem;
     .header-nav {
         display: flex;
         justify-content: space-between;
         align-items: center;
-        padding: 0 1.5rem;
+        padding: 0 1rem;
         .hdr-logo {
             width: 5rem;
         }
@@ -47,6 +46,8 @@
         .menu-burger.open {
             transform: scale(1);
             width: 100%;
+            background-color: $white;
+            z-index: 99;
         }
         nav {
             display: flex;
@@ -72,7 +73,8 @@
 @media screen and (min-width: 768px) {
     .main-header {
         color: $primary;
-        .header-nav {
+        padding: 0 2.5rem;
+        .header-nav.container {
             .burger {
                 transform: scale(0);
             }

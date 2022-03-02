@@ -2,28 +2,23 @@
 
 namespace App\Controller\Admin;
 
-use App\Entity\Article;
+use App\Entity\Equipe;
 use EasyCorp\Bundle\EasyAdminBundle\Controller\AbstractCrudController;
-use EasyCorp\Bundle\EasyAdminBundle\Field\AssociationField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\ImageField;
-use EasyCorp\Bundle\EasyAdminBundle\Field\TextEditorField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\TextField;
 
-class ArticleCrudController extends AbstractCrudController
+class EquipeCrudController extends AbstractCrudController
 {
     public static function getEntityFqcn(): string
     {
-        return Article::class;
+        return Equipe::class;
     }
 
     public function configureFields(string $pageName): iterable
     {
         return [
-            TextField::new('title'),
-            TextField::new('resume'),
-            TextEditorField::new('content'),
-            AssociationField::new('equipe'),
-            ImageField::new('image')
+            TextField::new('game'),
+            ImageField::new('banner')
                         ->setBasePath(' uploads/')
                         ->setUploadDir('public/uploads/img')
                     ->setUploadedFileNamePattern('[name][randomhash].[extension]')

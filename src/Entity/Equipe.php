@@ -35,7 +35,12 @@ class Equipe
     private $joueurs;
 
     /**
-     * @ORM\OneToMany(targetEntity=Planning::class, mappedBy="team", orphanRemoval=true)
+     * @ORM\Column(type="string", length=255)
+     */
+    private $banner;
+
+    /**
+     * @ORM\OneToMany(targetEntity=Planning::class, mappedBy="equipe", orphanRemoval=true)
      */
     private $plannings;
 
@@ -120,6 +125,23 @@ class Equipe
         return $this;
     }
 
+    public function getBanner(): ?string
+    {
+        return $this->banner;
+    }
+
+    public function setBanner(string $banner): self
+    {
+        $this->banner = $banner;
+
+        return $this;
+    }
+
+    public function __toString(): string
+    {
+        return $this->game;
+    }
+
     /**
      * @return Collection<int, Planning>
      */
@@ -132,7 +154,7 @@ class Equipe
     {
         if (!$this->plannings->contains($planning)) {
             $this->plannings[] = $planning;
-            $planning->setTeam($this);
+            $planning->setEquipe($this);
         }
 
         return $this;
@@ -142,8 +164,8 @@ class Equipe
     {
         if ($this->plannings->removeElement($planning)) {
             // set the owning side to null (unless already changed)
-            if ($planning->getTeam() === $this) {
-                $planning->setTeam(null);
+            if ($planning->getEquipe() === $this) {
+                $planning->setEquipe(null);
             }
         }
 

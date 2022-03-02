@@ -31,7 +31,7 @@ class Planning
      * @ORM\ManyToOne(targetEntity=Equipe::class, inversedBy="plannings")
      * @ORM\JoinColumn(nullable=false)
      */
-    private $team;
+    private $equipe;
 
     public function getId(): ?int
     {
@@ -62,14 +62,14 @@ class Planning
         return $this;
     }
 
-    public function getTeam(): ?Equipe
+    public function getEquipe(): ?Equipe
     {
-        return $this->team;
+        return $this->equipe;
     }
 
-    public function setTeam(?Equipe $team): self
+    public function setEquipe(?Equipe $equipe): self
     {
-        $this->team = $team;
+        $this->equipe = $equipe;
 
         return $this;
     }

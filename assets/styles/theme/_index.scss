@@ -1,0 +1,75 @@
+#hero-banner {
+    text-align: center;
+    min-height: 30vh;
+    background-image: url('../../../public/img/herobannerrf.png');
+    background-size: cover;
+    background-position: bottom;
+    color: $primary;
+    h2 {
+        font-family: $quicksand;
+        font-size: 1.1rem;
+    }
+}
+#index-presentation {
+    background-color: $primary;
+    color: $white;
+    text-align: center;
+    font-size: $pmobile;
+}
+@media screen and (min-width: 600px) {
+    #hero-banner {
+        min-height: 35vh;
+    } 
+}
+@media screen and (min-width: 750px) {
+    #hero-banner {
+        min-height: 45vh;
+        h1 {
+            font-size: 2rem;
+        }
+        h2 {
+            font-size: 1.4rem;
+        }
+    } 
+}
+@media screen and (min-width: 900px) {
+    #hero-banner {
+        min-height: 60vh;
+        h1 {
+            font-size: 2.5rem;
+        }
+        h2 {
+            font-size: 1.6rem;
+        }
+    }
+    #index-presentation {
+        .container {
+            padding : 2.5rem 3.5rem;
+        }
+        h2 {
+            margin-bottom: 1.5rem;
+        }
+    }
+}
+@media screen and (min-width: 1200px) {
+    #hero-banner {
+        min-height: 75vh;
+        h1 {
+            font-size: 3rem;
+        }
+        h2 {
+            font-size: 2rem;
+        }
+    } 
+}
+@media screen and (min-width: 1500px) {
+    #hero-banner {
+        min-height: 95vh;
+        h1 {
+            font-size: $h1;
+        }
+        h2 {
+            font-size: $h2;
+        }
+    } 
+}
