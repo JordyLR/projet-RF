@@ -10,3 +10,13 @@ import './styles/app.scss';
 
 // start the Stimulus application
 import './bootstrap';
+
+// MENU BURGER
+let link = document.querySelector('.burger')
+let burger = document.querySelector('.burger-icon')
+let ul = document.querySelector('.menu-burger')
+
+link.addEventListener('click', function() {
+  burger.classList.toggle('open')
+  ul.classList.toggle('open')
+})

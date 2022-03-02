@@ -1,0 +1,109 @@
+.main-header {
+    background-color: $white;
+    color: $primary;
+    border-bottom: $primary solid 2px;
+    padding: 0 2.5rem;
+    .header-nav {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 0 1.5rem;
+        .hdr-logo {
+            width: 5rem;
+        }
+        .burger-icon, .burger-icon::before, .burger-icon::after {
+            content: '';
+            display: inline-block;
+            width: 30px;
+            background-color: $primary;
+            height: 2px;
+            transition: all 0.3s ease-in;
+        }
+        .burger-icon {
+            position: relative;
+        }
+        .burger-icon::before {
+            position: absolute;
+            top: 7px;
+        }
+        .burger-icon::after {
+            position: absolute;
+            top: -7px;
+        }
+        .burger-icon.open {
+            background:transparent;
+        }
+        .burger-icon.open::before {
+            transform: rotate(225deg); 
+            top:0;
+        }
+        .burger-icon.open::after {
+            transform: rotate(-225deg);
+            top:0;
+        }
+        .menu-burger {
+            transform: scale(0);
+        }
+        .menu-burger.open {
+            transform: scale(1);
+            width: 100%;
+        }
+        nav {
+            display: flex;
+            gap: 3rem;
+            flex-direction: column;
+            position: fixed;
+            top: 5rem;
+            right: 0;
+            text-align: center;
+            padding: 0.5rem 1.5rem;
+            background-color: $white;
+            a {
+                font-family: $fugaz;
+                ion-icon {
+                    font-size: 1.5rem;
+                }
+            }
+
+        }
+    }
+}
+
+@media screen and (min-width: 768px) {
+    .main-header {
+        color: $primary;
+        .header-nav {
+            .burger {
+                transform: scale(0);
+            }
+            .menu-burger {
+                transform: scale(1);
+                background-color: inherit;
+                position: unset;
+                flex-direction: row;
+            }
+            .hover-underline-animation {
+                display: inline-block;
+                position: relative;
+            }
+            .hover-underline-animation:after {
+                content: '';
+                position: absolute;
+                width: 100%;
+                transform: scaleX(0);
+                height: 2px;
+                bottom: 0;
+                left: 0;
+                background-color: $primary;
+                transform-origin: bottom right;
+                transition: transform 0.40s ease-out;
+            }
+            
+            .hover-underline-animation:hover:after {
+                transform: scaleX(1);
+                transform-origin: bottom left;
+                color: $primary;
+            }
+        }
+    }
+}

@@ -1,0 +1,24 @@
+h1 { 
+    font-size: $h1mobile;
+}
+h2 {
+    font-size: $h2mobile;
+}
+h3 {
+    font-size: $h3mobile;
+}
+h1, h2, h3, h4 {
+    font-family: $fugaz;
+}
+
+@media screen and (min-width: 996px) {
+    h1 { 
+        font-size: $h1;
+    }
+    h2 {
+        font-size: $h2;
+    }
+    h3 {
+        font-size: $h3;
+    }
+}
