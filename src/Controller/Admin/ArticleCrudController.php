@@ -19,11 +19,11 @@ class ArticleCrudController extends AbstractCrudController
     public function configureFields(string $pageName): iterable
     {
         return [
-            TextField::new('title'),
-            TextField::new('resume'),
-            TextEditorField::new('content'),
-            AssociationField::new('equipe'),
-            ImageField::new('image')
+            TextField::new('title', 'Titre'),
+            TextField::new('resume', 'Résumé'),
+            TextEditorField::new('content', 'Contenu'),
+            AssociationField::new('equipe', 'Equipe'),
+            ImageField::new('image', 'Image de 500ko maximum')
                         ->setBasePath(' uploads/')
                         ->setUploadDir('public/uploads/img')
                     ->setUploadedFileNamePattern('[name][randomhash].[extension]')

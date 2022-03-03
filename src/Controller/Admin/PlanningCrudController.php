@@ -18,9 +18,9 @@ class PlanningCrudController extends AbstractCrudController
     public function configureFields(string $pageName): iterable
     {
         return [
-            TextField::new('opponent'),
-            DateTimeField::new('date'),
-            AssociationField::new('equipe'),
+            TextField::new('opponent', 'Adversaire'),
+            DateTimeField::new('date', 'Date du match'),
+            AssociationField::new('equipe', 'Equipe'),
         ];
     }
 }

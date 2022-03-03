@@ -17,8 +17,8 @@ class EquipeCrudController extends AbstractCrudController
     public function configureFields(string $pageName): iterable
     {
         return [
-            TextField::new('game'),
-            ImageField::new('banner')
+            TextField::new('game', 'Jeux'),
+            ImageField::new('banner', 'Bannière, 1400px de largeur')
                         ->setBasePath(' uploads/')
                         ->setUploadDir('public/uploads/img')
                     ->setUploadedFileNamePattern('[name][randomhash].[extension]')

@@ -1,0 +1,50 @@
+#equipes {
+    h1 {
+        text-align: center;
+        color: $primary;
+    }
+    .banner-equipe {
+        margin: 1.5rem 0;
+        position: relative;
+        color: $white;
+        img {
+            margin: auto;
+        }
+        .discover {
+            opacity: 0;
+        }
+        .discover-mobile {
+            position: absolute;
+            bottom: 0;
+            right: 0;
+            padding: 0.5rem;
+            margin-bottom: 1.2rem;
+            background-color: #8a2cb97c;
+        }
+    }
+}
+
+@media screen and (min-width: 1200px) {
+    #equipes {
+        .banner-equipe {
+            .discover {
+                display: inline-block;
+                position: absolute;
+                top: 50%;
+                left: 50%;
+                background-color: #8a2cb97c;
+                padding: 3rem;
+                transform: translate(-50%, -50%);
+                font-family: $fugaz;
+                font-size: 2rem;
+            }
+            .discover-mobile {
+                opacity: 0;
+            }
+            &:hover .discover {
+                opacity: 1;
+                transition: opacity 0.4s ease-in-out;
+            }
+        }
+    }
+}

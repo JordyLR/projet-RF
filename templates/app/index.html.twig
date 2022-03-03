@@ -16,4 +16,20 @@
     et comptons sur vous pour nous soutenir dans l'avenir et réaliser de GRANDE chose !</p>
         </div>
     </section>
+    <section id="plannings">
+        <h2>Prochain Matchs</h2>
+        {% for match in plannings %}
+            <div class="match">
+                <div class="game planning">
+                    <p>{{ match.equipe }}</p>
+                </div>
+                <div class="teams planning">
+                    <p>Reformed Family <span class="versus"> VS </span> {{ match.opponent }}</p>
+                </div>
+                <div class="matchday planning">
+                    <p>{{ match.date|date('d/m/Y à H:i:s') }}</p>
+                </div>
+            </div>
+        {% endfor %}
+    </section>
 {% endblock %}

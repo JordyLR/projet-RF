@@ -3,6 +3,7 @@
 namespace App\Repository;
 
 use App\Entity\Planning;
+use DateTime;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\ORM\OptimisticLockException;
 use Doctrine\ORM\ORMException;
@@ -48,19 +49,18 @@ class PlanningRepository extends ServiceEntityRepository
     // /**
     //  * @return Planning[] Returns an array of Planning objects
     //  */
-    /*
-    public function findByExampleField($value)
+    
+    public function findNext()
     {
         return $this->createQueryBuilder('p')
-            ->andWhere('p.exampleField = :val')
-            ->setParameter('val', $value)
-            ->orderBy('p.id', 'ASC')
-            ->setMaxResults(10)
+            ->andWhere('p.date > :now')
+            ->setParameter('now', new DateTime())
+            ->orderBy('p.date', 'ASC')
+            ->setMaxResults(3)
             ->getQuery()
             ->getResult()
         ;
     }
-    */
 
     /*
     public function findOneBySomeField($value): ?Planning
