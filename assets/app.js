@@ -19,4 +19,32 @@ let ul = document.querySelector('.menu-burger')
 link.addEventListener('click', function() {
   burger.classList.toggle('open')
   ul.classList.toggle('open')
-})
+});
+
+//Swipper
+const swiper = new Swiper('.swiper', {
+  slidesPerView: 1,
+  spaceBetween: 30,
+  autoplay: {
+    delay: 4000
+  },
+  breakpoints: {
+
+    720: {
+      slidesPerView: 2,
+      spaceBetween: 50
+    },
+    900: {
+      slidesPerView: 3,
+      spaceBetween: 50
+    }
+  },
+  // Optional parameters
+  direction: 'horizontal',
+  loop: true,
+
+  navigation: {
+    nextEl: '.swiper-button-next',
+    prevEl: '.swiper-button-prev',
+  },
+});

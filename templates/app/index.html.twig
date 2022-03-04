@@ -32,4 +32,48 @@
             </div>
         {% endfor %}
     </section>
+    <section id="home-article">
+        <h2>Les derniers articles</h2>
+            <div class="swiper container">
+                <div class="swiper-wrapper">
+                    {% for article in articles %}
+                        <article class="swiper-slide slide-index-article">
+                            <div class="article-img">
+                                <img src="{{ asset('uploads/img/')}}{{ article.image }}" alt="{{ article.title }}">
+                            </div>
+                            {% for game in article.equipe %}
+                            <span class="game-cat">{{ game.game }}</span>
+                            {% endfor %}
+                            <a href="{{ path('article_show', {id:article.id})}}">
+                            <h3>{{ article.title }}</h3>
+                            <p>{{ article.resume }}</p>
+                            </a>
+                        </article>
+                    {% endfor %}
+                </div>
+                <div class="swiper-button-prev"></div>
+                <div class="swiper-button-next"></div>
+            </div>
+    </section>
+    <section id="home-partenaire">
+        <h2>Nos partenaires</h2>
+            <div class="partenaires container">
+                <div class="partenaire-img">
+                    <img src="{{ asset('img/NBlogo.png') }}" alt="Logo de NewBalance, partnaire de Reformed Family eSport Club">
+                </div>
+                <div class="partenaire-img">
+                    <img src="{{ asset('img/PEUGEOTlogo.png') }}" alt="Logo de Peugeot, partnaire de Reformed Family eSport Club">
+                </div>
+                <div class="partenaire-img">
+                    <img src="{{ asset('img/roglogo.png') }}" alt="Logo de ROG, partnaire de Reformed Family eSport Club">
+                </div>
+            </div>
+    </section>
+    <section id="bouton-equipe">
+        <div class="bouton">
+            <h2><a href="{{ path('equipe_index')}}">
+                Découvrez les équipes</a>
+            </h2>
+        </div>
+    </section>
 {% endblock %}

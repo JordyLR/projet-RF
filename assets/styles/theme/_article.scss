@@ -1,0 +1,65 @@
+#article-page {
+    h1 {
+        color: $primary;
+        text-align: center;
+    }
+    .article-display {
+        text-align: center;
+        .card-article {
+            box-shadow: 2px 2px 20px $primary;
+            background-color: $black;
+            margin: 1.5rem auto;
+            width: 75%;
+            .game-cat {
+                color: $white;
+                background-color: $primary;
+                border-radius: 5px;
+                padding: 0.2rem;
+                margin: auto;
+            }
+            .article-text {
+                padding: 1rem 2rem;
+                h3 {
+                    color: $primary;
+                    font-family: $quicksand;
+                }
+                p {
+                    color: $white;
+                }
+            }
+        }
+
+        @media screen and (min-width: 700px) {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+        }   
+        @media screen and (min-width: 900px) {   
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 3rem;
+            .card-article {
+                width: 100%;
+                &:hover {
+                    transition: transform 0.3s ease-in;
+                    transform: translateY(-5px);
+                }
+            }
+        }
+    }
+}
+#article-show {
+    .container {
+        margin: auto;
+        color: $primary;
+        text-align: center;
+        
+        @media screen and (min-width: 800px) {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1rem;
+            .article-show-text div {
+                text-align: left;
+            }
+        }
+    }
+}

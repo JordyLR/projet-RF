@@ -2,6 +2,7 @@
 
 namespace App\Controller;
 
+use App\Entity\Article;
 use App\Entity\Equipe;
 use App\Entity\Planning;
 use DateTime;
@@ -23,8 +24,10 @@ class AppController extends AbstractController
     {
         $planningRepository = $doctrine->getRepository(Planning::class);
         $planning = $planningRepository->findNext();
+        $articleRepository = $doctrine->getRepository(Article::class);
+        $article = $articleRepository->findBy([], ['created_at' => 'DESC'], 4);
         return $this->render('app/index.html.twig', [
-            'plannings' => $planning,
+            'plannings' => $planning, 'articles' => $article
         ]);
     }
 }

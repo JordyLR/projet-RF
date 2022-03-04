@@ -1,7 +1,7 @@
 #hero-banner {
     text-align: center;
     min-height: 30vh;
-    background-image: url('../../../public/img/herobannerrf.png');
+    background-image: url('../img/herobannerrf.png');
     background-size: cover;
     background-position: bottom;
     color: $primary;
@@ -25,22 +25,28 @@
     }
     .match {
         display: flex;
-        flex-direction: row;
+        flex-direction: column;
+        width: 75%;
+        @media screen and (min-width: 900px) {
+            flex-direction: row;
+        }
         justify-content: center;
-        margin: 1rem 0;
+        margin: 1rem auto;
         align-items: center;
+        border: solid 1px $black;
         .planning {
+            display: block;
             padding: 1.5rem;
+            @media screen and (min-width: 900px) {
+                width: calc(100%/3);
+            }
             text-align: center;
-            width: 15%;
         }
         .game {
             background-color: $primary;
             color: $white;
         }
         .teams {
-            border: solid 1px $black;
-            width: 25%;
             .versus {
                 font-family: $fugaz;
             }
@@ -51,10 +57,94 @@
         }
     }
 }
-    @media screen and (min-width: 600px) {
+#home-partenaire {
+    h2 {
+        text-align: center;
+        color: $primary;
+    }
+    .partenaires {
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+        margin: auto;
+        .partenaire-img {
+            width: 25%;
+            @media screen and (min-width: 900px) {
+                width: 15%;
+            }
+            img {
+                width: 100%;
+                margin: auto;
+            }
+        }
+    }
+}
+@media screen and (min-width: 600px) {
     #hero-banner {
         min-height: 35vh;
     } 
+}
+
+#home-article {
+    background-color: $black;
+    h2 {
+        color: $white;
+        text-align: center;
+        padding-top: 2.5rem;
+    }
+    .swiper {
+        .slide-index-article {
+            background-color: $white;
+            text-align: left;
+            padding: 1.5rem;
+            img {
+                object-fit: cover;
+                margin: auto;
+                margin-bottom: 0.5rem;
+            }
+            h3 {
+                margin-top: 0.2rem;
+                font-family: $quicksand;
+                color: $primary;
+            }
+            .game-cat {
+                color: $white;
+                background-color: $primary;
+                border-radius: 5px;
+                padding: 0.2rem;
+                margin: auto;
+            }
+        }
+        .swiper-button-prev, .swiper-button-next  {
+            color: $primary;
+        }
+    }
+}
+#bouton-equipe {
+    background-image: url('../img/bannerequiperf.jpg');
+    .bouton {
+        text-align: center;
+        color: $primary;
+        padding: 3.5rem 1rem;
+        @media screen and (min-width: 900px) {
+            padding: 5rem;
+        }
+        &:hover {
+            transition: transform 0.3s ease-in;
+            transform: translateY(-5px);
+        }
+
+        a {
+            border-radius: 10px;
+            padding: 1.5rem 0.5rem;
+            @media screen and (min-width: 900px) {    
+                margin: 2.5rem;
+                padding: 2.5rem;
+            }
+            background-color: $white;
+            font-family: $fugaz;
+        }
+    }
 }
 @media screen and (min-width: 750px) {
     #hero-banner {
@@ -83,6 +173,14 @@
         }
         h2 {
             margin-bottom: 1.5rem;
+        }
+    }
+    #home-article {
+        .slide-index-article {
+            &:hover {
+                transition: transform 0.3s ease-in;
+                transform: translateY(-5px);
+            }
         }
     }
 }
