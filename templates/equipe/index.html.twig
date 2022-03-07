@@ -6,11 +6,13 @@
 <section id="equipes">
 <h1>Découvrez les équipes !</h1>
     {% for equipe in equipes %}
+    <a href="{{ path('equipe_show', {id:equipe.id} ) }}">
         <div class="banner-equipe">
             <img src="{{ asset('uploads/img/') }}{{ equipe.banner }}" alt="">
             <p class="discover-mobile">Découvrez l'équipe</p>
             <p class="discover">Découvrez l'équipe</p>
         </div>
+    </a>
     {% endfor %}
 </section>
 {% endblock %}

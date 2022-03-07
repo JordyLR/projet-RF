@@ -12,6 +12,9 @@
             <h1>{{ article.title}}</h1>
             {{ article.content|raw }}
         </div>
+        <div class="return-btn">
+            <a href="{{ path('article_index') }}">Revenir aux articles</a>
+        </div>
     </div>
 </section>
 {% endblock %}

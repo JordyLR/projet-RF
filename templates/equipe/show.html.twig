@@ -1,0 +1,52 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}{{ equipe }} {{ parent() }}{% endblock %}
+
+{% block body %}
+<section id="player-show">
+    <h1>L'équipe {{ equipe.game }}</h1>
+    <div class="container">
+        {% for player in equipe.joueurs %}
+        <div class="player-card">
+            <div class="player-show-img">
+                <img src="{{ asset('uploads/img/')}}{{ player.picture }}" alt="{{ player.pseudo }}">
+            </div>
+            <div class="player-show-text">
+                <h3>{{ player.pseudo }}</h3>
+                <p>{{ player.firstname }} {{ player.name }}</p>
+                <ul>
+                <li><p>Rôle : {{ player.role }}</p></li>
+                <li><p>Main : {{ player.main }}</p></li>
+                </ul>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+    <div class="container">
+        <div class="return-btn">
+            <a href="{{ path('equipe_index') }}">Revenir aux équipes</a>
+        </div>
+    </div>
+</section>
+<section id="article-player">
+    <h2>Article lié à l'équipe</h2>
+    <div class="container article-display">
+    {% for article in equipe.getArticles %}
+    <a href="{{ path('article_show', {id:article.id})}}">
+        <article class="card-article">
+            <div class="article-img">
+                <img src="{{ asset('uploads/img/')}}{{ article.image }}" alt="{{ article.title }}">
+            </div>
+            <div class="article-text">
+                {% for game in article.equipe %}
+                    <span class="game-cat">{{ game.game }}</span>
+                 {% endfor %}
+                <h3>{{ article.title }}</h3>
+                <p>{{ article.resume }}</p>
+            </div>
+        </article>
+    </a>
+    {% endfor %}
+    </div>
+</section>
+{% endblock %}

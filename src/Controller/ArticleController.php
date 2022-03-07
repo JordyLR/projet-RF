@@ -8,10 +8,14 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
+/**
+ * @Route("/article")
+ */
+
 class ArticleController extends AbstractController
 {
     /**
-     * @Route("/article", name="article_index")
+     * @Route("/", name="article_index")
      */
     public function index(ManagerRegistry $doctrine): Response
     {

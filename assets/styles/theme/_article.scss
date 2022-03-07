@@ -9,7 +9,7 @@
             box-shadow: 2px 2px 20px $primary;
             background-color: $black;
             margin: 1.5rem auto;
-            width: 75%;
+            width: 90%;
             .game-cat {
                 color: $white;
                 background-color: $primary;
@@ -32,11 +32,12 @@
         @media screen and (min-width: 700px) {
             display: grid;
             grid-template-columns: repeat(2, 1fr);
+            gap: 2rem;
         }   
-        @media screen and (min-width: 900px) {   
+        @media screen and (min-width: 980px) {   
             display: grid;
             grid-template-columns: repeat(3, 1fr);
-            gap: 3rem;
+            gap: 4rem;
             .card-article {
                 width: 100%;
                 &:hover {
@@ -59,6 +60,32 @@
             gap: 1rem;
             .article-show-text div {
                 text-align: left;
+            }
+        }
+        .article-show-text {
+            margin-bottom: 1rem;
+        }
+        .return-btn {
+            display: inline-block;
+            width: 250px;
+            background-color: $primary;
+            padding: 10px 20px;
+            color: $white;
+            border-radius: 10px;
+            position: relative;
+            transition: 0.5s ease-in-out;
+            &:before {
+                content: '<<';
+                position: absolute;
+                opacity: 0; 
+                left: 10px;
+                transition: 0.5s ease-in-out;
+            }    
+            &:hover {
+                padding-left: 50px;
+                &:before {
+                    opacity: 1;
+                }
             }
         }
     }
