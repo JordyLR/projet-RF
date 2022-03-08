@@ -8,6 +8,7 @@ use EasyCorp\Bundle\EasyAdminBundle\Field\AssociationField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\ImageField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\TextEditorField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\TextField;
+use Vich\UploaderBundle\Form\Type\VichImageType;
 
 class ArticleCrudController extends AbstractCrudController
 {
@@ -23,11 +24,9 @@ class ArticleCrudController extends AbstractCrudController
             TextField::new('resume', 'Résumé'),
             TextEditorField::new('content', 'Contenu'),
             AssociationField::new('equipe', 'Equipe'),
-            ImageField::new('image', 'Image de 500ko maximum')
-                        ->setBasePath(' uploads/')
-                        ->setUploadDir('public/uploads/img')
-                    ->setUploadedFileNamePattern('[name][randomhash].[extension]')
-                    ->setRequired(true),
+            TextField::new('imageFile')->setFormType(VichImageType::class, ['allow_delete' => false]),
+            ImageField::new('image')
+                        ->setBasePath(' uploads/img')->onlyOnIndex(),
         ];
     }
 }
