@@ -6,22 +6,25 @@
 <section id="article-page">
 <h1>Nos actualités</h1>
     <div class="container article-display">
-    {% for article in articles %}
-    <a href="{{ path('article_show', {id:article.id})}}">
-        <article class="card-article">
-            <div class="article-img">
-                <img src="{{ asset('uploads/img/')}}{{ article.image }}" alt="{{ article.title }}">
-            </div>
-            <div class="article-text">
-                {% for game in article.equipe %}
-                    <span class="game-cat">{{ game.game }}</span>
-                 {% endfor %}
-                <h3>{{ article.title }}</h3>
-                <p>{{ article.resume }}</p>
-            </div>
-        </article>
-    </a>
-    {% endfor %}
+        {% for article in articles %}
+        <a href="{{ path('article_show', {id:article.id})}}">
+            <article class="card-article">
+                <div class="article-img">
+                    <img src="{{ asset('uploads/img/')}}{{ article.image }}" alt="{{ article.title }}">
+                </div>
+                <div class="article-text">
+                    {% for game in article.equipe %}
+                        <span class="game-cat">{{ game.game }}</span>
+                    {% endfor %}
+                    <h3>{{ article.title }}</h3>
+                    <p>{{ article.resume }}</p>
+                </div>
+            </article>
+        </a>
+        {% endfor %}
+    </div>
+    <div class="paginator">
+        {{ knp_pagination_render(articles) }}
     </div>
 </section>
 {% endblock %}

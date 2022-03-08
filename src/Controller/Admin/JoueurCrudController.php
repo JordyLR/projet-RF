@@ -7,6 +7,7 @@ use EasyCorp\Bundle\EasyAdminBundle\Controller\AbstractCrudController;
 use EasyCorp\Bundle\EasyAdminBundle\Field\AssociationField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\ImageField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\TextField;
+use Vich\UploaderBundle\Form\Type\VichImageType;
 
 class JoueurCrudController extends AbstractCrudController
 {
@@ -24,11 +25,9 @@ class JoueurCrudController extends AbstractCrudController
             TextField::new('role', 'Rôle ou position dans l\'équipe'),
             TextField::new('main', 'Personnage/Arme ou autre préféré'),
             AssociationField::new('equipe', 'Equipe'),
-            ImageField::new('picture', 'Photo du joueur, 600px de hauteur')
-                        ->setBasePath(' uploads/')
-                        ->setUploadDir('public/uploads/img')
-                    ->setUploadedFileNamePattern('[name][randomhash].[extension]')
-                    ->setRequired(true),
+            TextField::new('imageFile', 'Photo du Joueur (entre 500 et 700px de hauteur, 1mo max)')->setFormType(VichImageType::class, ['required' => true]),
+            ImageField::new('picture')
+                        ->setBasePath(' uploads/img')->onlyOnIndex(),
         ];
     }
     

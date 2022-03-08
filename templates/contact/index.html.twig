@@ -1,0 +1,39 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Contact {{ parent() }}{% endblock %}
+
+{% block body %}
+<section id="contact-partenaire">
+        <h2>Ils sont déjà partenaires</h2>
+        <div class="partenaires container">
+            <div class="partenaire-img">
+                <img src="{{ asset('img/NBlogo.png') }}" alt="Logo de NewBalance, partnaire de Reformed Family eSport Club">
+            </div>
+            <div class="partenaire-img">
+                <img src="{{ asset('img/PEUGEOTlogo.png') }}" alt="Logo de Peugeot, partnaire de Reformed Family eSport Club">
+            </div>
+            <div class="partenaire-img">
+                <img src="{{ asset('img/roglogo.png') }}" alt="Logo de ROG, partnaire de Reformed Family eSport Club">
+            </div>
+        </div>
+</section>
+<section id="contact-page">
+<h2>Vous voulez rejoindre l'aventure ?</h2>
+    {% for messages in app.flashes %}
+    <p>
+        {% for message in messages %}
+            {{ message }}
+        {% endfor %} 
+    </p>
+    {% endfor %}
+    <div class="container contact-container">
+    {{ form_start(form) }}
+            {{ form_row(form.entreprise, {'attr': {'class': 'form-control'}}) }}
+            {{ form_row(form.email, {'attr': {'class': 'form-control'}}) }}
+            {{ form_row(form.message, {'attr': {'class': 'form-control'}}) }}
+            <input type="submit" value="Envoyer" class="btn-contact">
+    {{ form_end(form) }}
+    </div>
+
+</section>
+{% endblock %}

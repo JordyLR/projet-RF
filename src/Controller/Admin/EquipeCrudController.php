@@ -6,6 +6,7 @@ use App\Entity\Equipe;
 use EasyCorp\Bundle\EasyAdminBundle\Controller\AbstractCrudController;
 use EasyCorp\Bundle\EasyAdminBundle\Field\ImageField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\TextField;
+use Vich\UploaderBundle\Form\Type\VichImageType;
 
 class EquipeCrudController extends AbstractCrudController
 {
@@ -18,11 +19,9 @@ class EquipeCrudController extends AbstractCrudController
     {
         return [
             TextField::new('game', 'Jeux'),
-            ImageField::new('banner', 'Bannière, 1400px de largeur')
-                        ->setBasePath(' uploads/')
-                        ->setUploadDir('public/uploads/img')
-                    ->setUploadedFileNamePattern('[name][randomhash].[extension]')
-                    ->setRequired(true),
+            TextField::new('imageFile', 'Bannière pour la page équipe, entre 1000 et 2000px de large, 1mo max')->setFormType(VichImageType::class, ['required' => true]),
+            ImageField::new('banner')
+                        ->setBasePath(' uploads/img')->onlyOnIndex(),
         ];
     }
 }

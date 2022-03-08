@@ -39,7 +39,7 @@ class Equipe
     private $joueurs;
 
     /**
-     * @ORM\Column(type="string", length=255)
+     * @ORM\Column(type="string", length=255, nullable=true)
      */
     private $banner;
 
@@ -154,7 +154,7 @@ class Equipe
         return $this->banner;
     }
 
-    public function setBanner(string $banner): self
+    public function setBanner(?string $banner): self
     {
         $this->banner = $banner;
 

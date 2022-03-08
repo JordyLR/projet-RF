@@ -24,9 +24,9 @@ class ArticleCrudController extends AbstractCrudController
             TextField::new('resume', 'Résumé'),
             TextEditorField::new('content', 'Contenu'),
             AssociationField::new('equipe', 'Equipe'),
-            TextField::new('imageFile')->setFormType(VichImageType::class, ['allow_delete' => false]),
+            TextField::new('imageFile', 'Image pour l\'article, entre 500 et 900px de large et 1mo max')->setFormType(VichImageType::class, ['required' => true]),
             ImageField::new('image')
-                        ->setBasePath(' uploads/img')->onlyOnIndex(),
+                        ->setBasePath('uploads/img')->onlyOnIndex(),
         ];
     }
 }
