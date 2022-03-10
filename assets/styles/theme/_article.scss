@@ -94,3 +94,74 @@
         }
     }
 }
+#article-commentaire {
+    background-color: $primary;
+    h2 {
+        color: $white;
+    }
+    .commentaire-box {
+        background-color: $white;
+        padding: 0.5rem;
+        margin: 1rem 0;
+        &:nth-child(even) {
+            text-align: right;
+        }
+    }
+    .be-connected {
+        color: $white;
+        a {
+            font-weight: 800;
+        }
+    }
+    .add-commentaire {
+        div {
+
+            display: flex;
+            flex-direction: column;
+            color: $white;
+            margin-bottom: 1rem;
+            textarea {
+                resize: vertical;
+            }
+            button {
+                background-color: $black;
+                color: $white;
+                cursor: pointer;
+                border: solid 2px $black;
+                border-radius: 10px;
+                padding: 10px 30px;
+                margin: auto;
+                &:hover {
+                    transition: transform 0.3s ease-in;
+                    transform: translateY(-5px);
+                }
+            }
+        }
+    }
+}
+.form-commentaire {
+    height: 60vh;
+    div {
+
+        display: flex;
+        flex-direction: column;
+        color: $white;
+        margin-bottom: 1rem;
+        textarea {
+            resize: vertical;
+        }
+        button {
+            background-color: $black;
+            color: $white;
+            cursor: pointer;
+            border: solid 2px $black;
+            border-radius: 10px;
+            padding: 10px 30px;
+            margin: auto;
+            &:hover {
+                transition: transform 0.3s ease-in;
+                transform: translateY(-5px);
+            }
+        }
+    }
+}

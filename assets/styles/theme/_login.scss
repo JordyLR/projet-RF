@@ -1,0 +1,108 @@
+.login-connected {
+    text-align: center;
+    height: 55vh;
+    a {
+        color: $primary;
+        font-weight: 600;
+    }
+}
+.create-account {
+    margin-top: 1.5rem;
+    text-align: center;
+    a {
+        color: $primary;
+        font-weight: 600;
+    }
+}
+.form-login {
+    margin: auto;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    width: 90%;
+    @media screen and (min-width: 980px) {
+        width: 60%;
+    }
+    h1 {
+        text-align: center;
+        color: $primary;
+    }
+    .btn-connection {
+        background-color: $black;
+        color: $white;
+        cursor: pointer;
+        border: solid 2px $black;
+        border-radius: 10px;
+        padding: 10px 30px;
+        margin: auto;
+        &:hover {
+            transition: transform 0.3s ease-in;
+            transform: translateY(-5px);
+        }
+    }
+}
+.register-form {
+    height: 60vh;
+    h1 {
+        text-align: center;
+        color: $primary;
+    }
+
+    .form {
+        margin: auto;
+        display: flex;
+        flex-direction: column;
+        gap: 1rem;
+        width: 90%;
+        div {
+            display: flex;
+            flex-direction: column;
+        }
+        @media screen and (min-width: 980px) {
+            width: 60%;
+        }
+        .btn-connection {
+            background-color: $black;
+            color: $white;
+            cursor: pointer;
+            border: solid 2px $black;
+            border-radius: 10px;
+            padding: 10px 30px;
+            margin: auto;
+            &:hover {
+                transition: transform 0.3s ease-in;
+                transform: translateY(-5px);
+            }
+        }
+    }
+}
+.edit-user {
+    height: 60vh;
+    form {
+        margin: auto;
+        display: flex;
+        flex-direction: column;
+        gap: 1rem;
+        width: 90%;
+        div {
+            display: flex;
+            flex-direction: column;
+        }
+        @media screen and (min-width: 980px) {
+            width: 60%;
+        }
+        button {
+            background-color: $black;
+            color: $white;
+            cursor: pointer;
+            border: solid 2px $black;
+            border-radius: 10px;
+            padding: 10px 30px;
+            margin: auto;
+            &:hover {
+                transition: transform 0.3s ease-in;
+                transform: translateY(-5px);
+            }
+        }
+    }
+}

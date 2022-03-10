@@ -1,0 +1,9 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+<div class="container form-commentaire">
+{{ form_start(form, {'attr' : {'class': 'form-commentaire'}}) }}
+    {{ form_row(form.content, {label: 'Contenu du commentaire'}) }}
+{{ form_end(form) }}
+</div>
+{% endblock %}

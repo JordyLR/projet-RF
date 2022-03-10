@@ -17,4 +17,28 @@
         </div>
     </div>
 </section>
+<section id="article-commentaire">
+    <div class="container">
+    <h2>Vos réactions à cette article !</h2>
+        {% for commentaire in commentaires %}
+            {% if commentaire.article.id == article.id %}
+                <div class="commentaire-box">
+                    <p>{{ commentaire.author.getUserIdentifier }} :</p>
+                    <p>{{ commentaire.content }}</p>
+                    {% if commentaire.author == app.user %}
+                        <a href="{{ path('delete_commentaire', { id:commentaire.id }) }}"><ion-icon name="trash"></ion-icon></a>
+                        <a href="{{ path('edit_commentaire', { id:commentaire.id }) }}"><ion-icon name="create"></ion-icon></a>
+                    {% endif %}
+                </div>
+            {% endif %}
+        {% endfor %}
+        {% if app.user %}
+            {% include('commentaire/add.html.twig') %}
+        {% else %}
+            <div class="be-connected">
+                <p>Veuillez vous <a href="{{ path('app_login') }}">connecter</a> pour laisser un commentaire</p>
+            </div>
+        {% endif %}
+    </div>
+</section>
 {% endblock %}

@@ -1,0 +1,11 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+<div class="container edit-user">
+    {{ form_start(form, {'attr' : {'class': 'form-edit-user'}}) }}
+    {{ form_row(form.username, {label: 'Votre Pseudo'}) }}
+    {{ form_row(form.password, {label: 'Votre mot de passe actuel ou votre nouveau'}) }}
+    {{ form_row(form.email, {label: 'Votre adresse mail'}) }}
+    {{ form_end(form) }}
+</div>
+{% endblock %}

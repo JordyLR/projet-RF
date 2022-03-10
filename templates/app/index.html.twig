@@ -11,7 +11,7 @@
         <div class="container">
             <h2>Qui sommes nous ?</h2>
             <p>Créer en 2019, la Reformed Family est un club d'eSport qui a pour objectif de se professionnaliser dans les prochaines années.
-    Notre équipe est bien pus que ça, une famille, des joueurs soudés qui vont tous dans la même direction et qui sont passionnés avant tout.
+    Notre équipe est bien plus que ça, une famille, des joueurs soudés qui vont tous dans la même direction et qui sont passionnés avant tout.
     L'eSport est pour nous l'avenir des compétitions haut niveau, c'est pour cela qu'à l'aide de nos partenaires nous visons les sommets
     et comptons sur vous pour nous soutenir dans l'avenir et réaliser de GRANDE chose !</p>
         </div>
@@ -34,26 +34,26 @@
     </section>
     <section id="home-article">
         <h2>Les derniers articles</h2>
-            <div class="swiper container">
-                <div class="swiper-wrapper">
-                    {% for article in articles %}
-                        <article class="swiper-slide slide-index-article">
-                            <div class="article-img">
-                                <img src="{{ asset('uploads/img/')}}{{ article.image }}" alt="{{ article.title }}">
-                            </div>
-                            {% for game in article.equipe %}
+        <div class="swiper container">
+            <div class="swiper-wrapper">
+                {% for article in articles %}
+                    <article class="swiper-slide slide-index-article">
+                        <div class="article-img">
+                            <img src="{{ asset('uploads/img/')}}{{ article.image }}" alt="{{ article.title }}">
+                        </div>
+                        {% for game in article.equipe %}
                             <span class="game-cat">{{ game.game }}</span>
-                            {% endfor %}
-                            <a href="{{ path('article_show', {id:article.id})}}">
-                            <h3>{{ article.title }}</h3>
-                            <p>{{ article.resume }}</p>
-                            </a>
-                        </article>
-                    {% endfor %}
-                </div>
-                <div class="swiper-button-prev"></div>
-                <div class="swiper-button-next"></div>
+                        {% endfor %}
+                        <a href="{{ path('article_show', {id:article.id})}}">
+                        <h3>{{ article.title }}</h3>
+                        <p>{{ article.resume }}</p>
+                        </a>
+                    </article>
+                {% endfor %}
             </div>
+            <div class="swiper-button-prev"></div>
+            <div class="swiper-button-next"></div>
+        </div>
     </section>
     <section id="home-partenaire">
         <h2>Nos partenaires</h2>

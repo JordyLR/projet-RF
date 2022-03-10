@@ -3,6 +3,7 @@
 namespace App\Controller\Admin;
 
 use App\Entity\Planning;
+use EasyCorp\Bundle\EasyAdminBundle\Config\Crud;
 use EasyCorp\Bundle\EasyAdminBundle\Controller\AbstractCrudController;
 use EasyCorp\Bundle\EasyAdminBundle\Field\AssociationField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\DateTimeField;
@@ -22,5 +23,11 @@ class PlanningCrudController extends AbstractCrudController
             DateTimeField::new('date', 'Date du match'),
             AssociationField::new('equipe', 'Equipe'),
         ];
+    }
+
+    public function configureCrud(Crud $crud): Crud
+    {
+        return $crud
+            ->setDefaultSort(['date' => 'DESC']);
     }
 }
