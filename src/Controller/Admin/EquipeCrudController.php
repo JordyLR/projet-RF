@@ -19,9 +19,9 @@ class EquipeCrudController extends AbstractCrudController
     {
         return [
             TextField::new('game', 'Jeux'),
-            TextField::new('imageFile', 'Bannière pour la page équipe, entre 1000 et 2000px de large, 1mo max')->setFormType(VichImageType::class, ['required' => true]),
+            TextField::new('imageFile', 'Bannière pour la page équipe, entre 1000 et 2000px de large, 1mo max')->setFormType(VichImageType::class, ['required' => true])->hideOnIndex(),
             ImageField::new('banner')
-                        ->setBasePath(' uploads/img')->onlyOnIndex(),
+                        ->setBasePath('uploads/img')->onlyOnIndex(),
         ];
     }
 }

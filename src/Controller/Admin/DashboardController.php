@@ -35,6 +35,8 @@ class DashboardController extends AbstractDashboardController
 
     public function configureMenuItems(): iterable
     {
+
+        yield MenuItem::linkToRoute('Se rendre sur le site', 'fa fa-window-maximize', 'app_index');
         yield MenuItem::linkToCrud('Article', 'fas fa-newspaper', Article::class);
         yield MenuItem::linkToCrud('Equipe', 'fa fa-gamepad', Equipe::class);
         yield MenuItem::linkToCrud('Commentaire', 'fa fa-comments', Commentaire::class);

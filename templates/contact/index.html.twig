@@ -28,10 +28,10 @@
     {% endfor %}
     <div class="container contact-container">
     {{ form_start(form) }}
-            {{ form_row(form.entreprise, {'attr': {'class': 'form-control'}}) }}
-            {{ form_row(form.email, {'attr': {'class': 'form-control'}}) }}
-            {{ form_row(form.message, {'attr': {'class': 'form-control'}}) }}
-            <input type="submit" value="Envoyer" class="btn-contact">
+            {{ form_row(form.entreprise, {'attr': {'class': 'form-control'}, label: 'Entreprise'}) }}
+            {{ form_row(form.mail, {'attr': {'class': 'form-control'}, label: 'Adresse mail'}) }}
+            {{ form_row(form.message, {'attr': {'class': 'form-control'}, label: 'Votre message'}) }}
+            {{ form_row(form.send, {'attr': {'class': 'btn-contact'}})}}
     {{ form_end(form) }}
     </div>
 

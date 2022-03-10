@@ -18,10 +18,11 @@
 }
 
 #plannings {
+    padding-top: 2.5em;
+    padding-bottom: 2.5em;
     h2 {
         color: $primary;
         text-align: center;
-        padding-top: 2.5rem;
     }
     .match {
         display: flex;
@@ -58,6 +59,8 @@
     }
 }
 #home-partenaire {
+    padding-top: 2.5em;
+    padding-bottom: 2.5em;
     h2 {
         text-align: center;
         color: $primary;
@@ -87,10 +90,11 @@
 
 #home-article {
     background-color: $black;
+    padding-top: 2.5rem;
+    padding-bottom: 2.5em;
     h2 {
         color: $white;
         text-align: center;
-        padding-top: 2.5rem;
     }
     .swiper {
         .slide-index-article {

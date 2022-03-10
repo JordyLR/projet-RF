@@ -19,6 +19,7 @@ class CommentaireCrudController extends AbstractCrudController
     {
         return [
             TextField::new('content', 'Commentaire'),
+            TextField::new('author.getUserIdentifier', 'Commentaire')->onlyOnIndex(),
         ];
     }
     

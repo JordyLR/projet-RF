@@ -4,6 +4,10 @@ namespace App\Controller;
 
 use App\Form\ContactType;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\Form\Extension\Core\Type\EmailType;
+use Symfony\Component\Form\Extension\Core\Type\SubmitType;
+use Symfony\Component\Form\Extension\Core\Type\TextType;
+use Symfony\Component\Form\Extension\Core\Type\TextareaType;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Mailer\MailerInterface;
@@ -17,21 +21,24 @@ class ContactController extends AbstractController
      */
     public function index(Request $request, MailerInterface $mailer)
     {
-        $form = $this->createForm(ContactType::class);
+        $form = $this->createFormBuilder()
+            ->add('entreprise', TextType::class)
+            ->add('mail', EmailType::class)
+            ->add('message', TextareaType::class)
+            ->add('send', SubmitType::class, ['label' => 'Envoyer'])
+            ->getForm();;
         $form->handleRequest($request);
         if($form->isSubmitted() && $form->isValid()) {
             $contactFormData = $form->getData();
             
             $message = (new Email())
-                ->from($contactFormData['email'])
+                ->from($contactFormData['mail'])
                 ->to('jordy_leroux@yahoo.com')
                 ->subject('Vous avez reçu un email')
-                ->text('Sender : '.$contactFormData['email'].\PHP_EOL.
-                    $contactFormData['message'],
-                    'text/plain');
+                ->text('Envoyé par : '.$contactFormData['mail'].\PHP_EOL.
+                    $contactFormData['message']);
             $mailer->send($message);
-            $this->addFlash('succes', 'Vore message a été envoyé');
-            return $this->redirectToRoute('contact');
+            $this->addFlash('succes', 'Votre message a été envoyé');
         }
         return $this->render('contact/index.html.twig', [
             'form' => $form->createView()

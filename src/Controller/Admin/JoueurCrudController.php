@@ -25,9 +25,9 @@ class JoueurCrudController extends AbstractCrudController
             TextField::new('role', 'Rôle ou position dans l\'équipe'),
             TextField::new('main', 'Personnage/Arme ou autre préféré'),
             AssociationField::new('equipe', 'Equipe'),
-            TextField::new('imageFile', 'Photo du Joueur (entre 500 et 700px de hauteur, 1mo max)')->setFormType(VichImageType::class, ['required' => true]),
+            TextField::new('imageFile', 'Photo du Joueur (entre 500 et 700px de hauteur, 1mo max)')->setFormType(VichImageType::class, ['required' => true])->hideOnIndex(),
             ImageField::new('picture')
-                        ->setBasePath(' uploads/img')->onlyOnIndex(),
+                        ->setBasePath('uploads/img')->onlyOnIndex(),
         ];
     }
     
