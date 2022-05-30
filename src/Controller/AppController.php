@@ -27,7 +27,8 @@ class AppController extends AbstractController
         $articleRepository = $doctrine->getRepository(Article::class);
         $article = $articleRepository->findBy([], ['created_at' => 'DESC'], 4);
         return $this->render('app/index.html.twig', [
-            'plannings' => $planning, 'articles' => $article
+            'plannings' => $planning,
+            'articles' => $article
         ]);
     }
 }

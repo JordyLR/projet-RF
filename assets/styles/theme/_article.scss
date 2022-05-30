@@ -2,6 +2,21 @@
     h1 {
         color: $primary;
         text-align: center;
+        margin: 1.5rem 0;
+    }
+    .search-field {
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+        border: 1px solid var(--text-color);
+        padding: 5px 10px;
+        border-radius: 5px;
+        border: black solid 1px;
+        width: max-content;
+        margin: auto;
+    }
+    .search-field input {
+        border: transparent;
     }
     .article-display {
         text-align: center;
@@ -47,9 +62,22 @@
             }
         }
     }
-    .paginator {
-        text-align: center;
+    .pagination {
+        display: flex;
+        justify-content: center;
+        gap: 1rem;
         color: $primary;
+        font-weight: 700;
+        margin-bottom: 2rem;
+        span {
+            width: 25px;
+            height: 25px;
+            text-align: center;
+            &:hover {
+                transform: translateY(-2px);
+                transition: transform 0.2s ease-in-out;
+            }
+        }
     }
 }
 #article-show {
@@ -80,6 +108,7 @@
             transition: 0.5s ease-in-out;
             &:before {
                 content: '<<';
+                font-weight: 800;
                 position: absolute;
                 opacity: 0; 
                 left: 10px;
@@ -107,6 +136,9 @@
         margin: 1rem 0;
         &:nth-child(even) {
             text-align: right;
+        }
+        .pseudo-author {
+            font-weight: 800;
         }
     }
     .be-connected {

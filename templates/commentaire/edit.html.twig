@@ -1,9 +1,14 @@
 {% extends 'base.html.twig' %}
 
+{% block title %}Éditer un commentaire {{ parent() }}{% endblock %}
+
 {% block body %}
-<div class="container form-commentaire">
-{{ form_start(form, {'attr' : {'class': 'form-commentaire'}}) }}
-    {{ form_row(form.content, {label: 'Contenu du commentaire'}) }}
-{{ form_end(form) }}
-</div>
+{% if app.user.id == commentaire.getauthor.id %}
+    <div class="container form-commentaire">
+        <p>Modifier votre commentaire sur l'article : {{ commentaire.article.getTitle }}</p>
+        {{ form_start(form, {'attr' : {'class': 'form-commentaire'}}) }}
+            {{ form_row(form.content, {label: 'Contenu du commentaire'}) }}
+        {{ form_end(form) }}
+    </div>
+{% endif %}
 {% endblock %}

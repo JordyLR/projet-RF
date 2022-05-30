@@ -8,8 +8,20 @@
         align-items: center;
         padding: 0 1rem;
         .hdr-logo {
-            width: 5rem;
+            width: 4rem;
         }
+
+        .flash-message {
+            position: fixed;
+            bottom: 10px;
+            left: 10px;
+            background-color: $white;
+            border: solid 1px $black;
+            color: $primary;
+            border-radius: 5px;
+            padding: 5px 10px;
+        }
+
         .burger-icon, .burger-icon::before, .burger-icon::after {
             content: '';
             display: inline-block;
@@ -70,11 +82,14 @@
     }
 }
 
-@media screen and (min-width: 768px) {
+@media screen and (min-width: 900px) {
     .main-header {
         color: $primary;
         padding: 0 2.5rem;
-        .header-nav.container {
+        .header-nav {
+            .hdr-logo {
+                width: 5rem;
+            }
             .burger {
                 transform: scale(0);
             }

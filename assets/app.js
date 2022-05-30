@@ -48,3 +48,29 @@ const swiper = new Swiper('.swiper', {
     prevEl: '.swiper-button-prev',
   },
 });
+
+// Search Field
+
+window.onload = () => {
+  const searchInput = document.querySelector("#search-field")
+// on lance une fonction à chaque touche écrite dans le champ recherche
+  searchInput.addEventListener("keyup", () => {
+      let searchResult = searchInput.value;
+      // on récupère l'url actuel
+      const Url = new URL(window.location.href);
+      fetch(Url.pathname + "?search=" + searchResult + "&ajax=1", {
+          headers: {
+              "X-Requested-Width": "XMLHttpRequest"
+          }
+      }).then(response => 
+          response.json()
+          ).then(data => {
+          const content = document.querySelector('#body-content');
+          // ici on envoie la data qu'on a récupérer dans la réponse vers notre div
+          content.innerHTML = data.content;
+          // ici on envoie a l'url la recherche pour que le php la récupère en request
+          history.pushState({}, null, Url.pathname + "?search=" + searchResult)
+      }).catch(e => alert(e));
+
+  })
+}

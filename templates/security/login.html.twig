@@ -3,7 +3,7 @@
 {% block title %}Se connecter ! {{ parent() }}{% endblock %}
 
 {% block body %}
-<div class="container">
+<div class="container container-login">
         <form method="post" class="form-login">
         {% if error %}
             <div class="alert alert-danger">{{ error.messageKey|trans(error.messageData, 'security') }}</div>
@@ -11,7 +11,8 @@
 
         {% if app.user %}
             <div class="login-connected">
-                Vous êtes connecté en tant que {{ app.user.username }}, <a href="{{ path('app_logout') }}">Se déconnecter</a>, <a href="{{ path('user_edit', {'id' : app.user.id }) }}">Modifier mon profil</a>
+                <p>Vous êtes connecté en tant que {{ app.user.username }}, <a href="{{ path('app_logout') }}">Se déconnecter</a></p>
+                <p><a href="{{ path('user_edit') }}">Modifier mon profil</a> ou <a href="{{ path('user_password_edit', {id:app.user.id} ) }}">Changer mon mot de passe</a></p>
                 <p>Email : {{ app.user.email }}</p>
             </div>
         {% else %}
@@ -40,6 +41,7 @@
             Se connecter
         </button>
         </form>
+        <a class="forgot-pass" href="{{ path('app_forgot_password_request') }}">Mot de passe oublié ?</a>
         {% endif %}
     {% if app.user %}
     {% else %}

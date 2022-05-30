@@ -4,7 +4,7 @@
 
 {% block body %}
 <section id="article-show">
-    <div class="container">
+    <article class="container">
         <div class="article-show-img">
             <img src="{{ asset('uploads/img/')}}{{ article.image }}" alt="{{ article.title }}">
         </div>
@@ -15,7 +15,7 @@
         <div class="return-btn">
             <a href="{{ path('article_index') }}">Revenir aux articles</a>
         </div>
-    </div>
+    </article>
 </section>
 <section id="article-commentaire">
     <div class="container">
@@ -23,7 +23,7 @@
         {% for commentaire in commentaires %}
             {% if commentaire.article.id == article.id %}
                 <div class="commentaire-box">
-                    <p>{{ commentaire.author.getUserIdentifier }} :</p>
+                    <p class='pseudo-author'>{{ commentaire.author.getUserIdentifier }} :</p>
                     <p>{{ commentaire.content }}</p>
                     {% if commentaire.author == app.user %}
                         <a href="{{ path('delete_commentaire', { id:commentaire.id }) }}"><ion-icon name="trash"></ion-icon></a>

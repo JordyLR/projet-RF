@@ -9,6 +9,7 @@ use App\Form\CommentaireType;
 use Doctrine\Persistence\ManagerRegistry;
 use Knp\Component\Pager\PaginatorInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
@@ -25,7 +26,16 @@ class ArticleController extends AbstractController
     public function index(Request $request, ManagerRegistry $doctrine, PaginatorInterface $paginator): Response
     {
         $repository = $doctrine->getRepository(Article::class);
-        $article = $repository->findBy([], ['created_at' => 'DESC']);
+        $search = $request->get('search');
+        $article = $repository->findBySearch($search);
+        // on fait une condition pour quand il y a une recherche 'ajax' (on ne l'a voit pas dans l'url)
+        if($request->get('ajax')) {
+            return new JsonResponse([
+                'content' => $this->renderView('article/_content.html.twig', [
+                    'articles' => $article,
+                ]),
+            ]);
+        }
         $article = $paginator->paginate(
             $article, /* query NOT result */
             $request->query->getInt('page', 1), /*page number*/
@@ -67,10 +77,9 @@ class ArticleController extends AbstractController
     }
 
     /**
-     * @Route("/{id}/supprimer", name="delete_commentaire", requirements={ "id" : "\d+" })
+     * @Route("/{id}/supprimercom", name="delete_commentaire", requirements={ "id" : "\d+" })
      */
     public function deleteCommentaire($id, ManagerRegistry $doctrine, Request $request): Response {
-        $route = $request->headers->get('referer');
         $repositoryCommentaire = $doctrine->getRepository(Commentaire::class);
         $commentaire = $repositoryCommentaire->find($id);
         $em = $doctrine->getManager();
@@ -80,11 +89,15 @@ class ArticleController extends AbstractController
         // $request->attributes->get('_route')
     }
     /**
-     * @Route("/{id}/editer", name="edit_commentaire", requirements={ "id" : "\d+" })
+     * @Route("/{id}/editercom", name="edit_commentaire", requirements={ "id" : "\d+" })
      */
     public function edit($id, ManagerRegistry $doctrine, Request $request): Response {
         $repository = $doctrine->getRepository(Commentaire::class);
         $commentaire = $repository->find($id);
+        if ($this->getUser()!= $commentaire->getAuthor()){
+            $this->addFlash('notice', 'Vous ne pouvez pas accéder à cette ressource');
+            return $this->redirectToRoute('app_index', [], Response::HTTP_SEE_OTHER);
+        }
         $form = $this->createForm(CommentaireType::class, $commentaire);
         $form->handleRequest($request);
         if($form->isSubmitted() && $form->isValid()) {
@@ -93,7 +106,8 @@ class ArticleController extends AbstractController
             return $this->redirectToRoute('article_show', [ 'id' => $commentaire->getArticle()->getId()]);
         }
         return $this->render('commentaire/edit.html.twig', [
-            'form' => $form->createView()
+            'form' => $form->createView(),
+            'commentaire' => $commentaire
         ]);
     }
 

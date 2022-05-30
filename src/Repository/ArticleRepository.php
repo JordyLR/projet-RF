@@ -45,6 +45,18 @@ class ArticleRepository extends ServiceEntityRepository
         }
     }
 
+    // cette requete est créé pour les champs de recherche, elle va chercher dans la bdd si les entrées existes
+    public function findBySearch($s)
+    {
+        return $this->createQueryBuilder('u')
+            ->where('u.title LIKE :search')
+            ->setParameter('search',"%$s%")
+            ->orderBy('u.created_at', 'DESC')
+            ->getQuery()
+            ->getResult()
+        ;
+    }
+
     // /**
     //  * @return Article[] Returns an array of Article objects
     //  */

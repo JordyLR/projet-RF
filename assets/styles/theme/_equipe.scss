@@ -2,6 +2,7 @@
     h1 {
         text-align: center;
         color: $primary;
+        margin: 1.5rem 0;
     }
     .banner-equipe {
         margin: 1.5rem 0;
@@ -127,6 +128,10 @@
     }
     .article-display {
         text-align: center;
+        @media screen and (min-width: 900px) {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+        }
         .card-article {
             box-shadow: 2px 2px 20px $primary;
             background-color: $black;

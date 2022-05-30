@@ -33,9 +33,9 @@ class ContactController extends AbstractController
             
             $message = (new Email())
                 ->from($contactFormData['mail'])
-                ->to('jordy_leroux@yahoo.com')
-                ->subject('Vous avez reçu un email')
-                ->text('Envoyé par : '.$contactFormData['mail'].\PHP_EOL.
+                ->to('exemple@campusdulac.com')
+                ->subject('Vous avez reçu un email via le formulaire de contact du site')
+                ->text('Envoyé par : '.$contactFormData['entreprise'].\PHP_EOL.
                     $contactFormData['message']);
             $mailer->send($message);
             $this->addFlash('succes', 'Votre message a été envoyé');

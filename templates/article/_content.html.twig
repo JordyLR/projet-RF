@@ -1,0 +1,16 @@
+{% for article in articles %}
+    <a href="{{ path('article_show', {id:article.id})}}">
+        <article class="card-article">
+            <div class="article-img">
+                <img src="{{ asset('uploads/img/')}}{{ article.image }}" alt="{{ article.title }}">
+            </div>
+            <div class="article-text">
+                {% for game in article.equipe %}
+                    <span class="game-cat">{{ game.game }}</span>
+                {% endfor %}
+                <h3>{{ article.title }}</h3>
+                <p>{{ article.resume }}</p>
+            </div>
+        </article>
+    </a>
+{% endfor %}

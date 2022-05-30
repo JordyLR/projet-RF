@@ -5,23 +5,17 @@
 {% block body %}
 <section id="article-page">
 <h1>Nos actualités</h1>
-    <div class="container article-display">
-        {% for article in articles %}
-        <a href="{{ path('article_show', {id:article.id})}}">
-            <article class="card-article">
-                <div class="article-img">
-                    <img src="{{ asset('uploads/img/')}}{{ article.image }}" alt="{{ article.title }}">
-                </div>
-                <div class="article-text">
-                    {% for game in article.equipe %}
-                        <span class="game-cat">{{ game.game }}</span>
-                    {% endfor %}
-                    <h3>{{ article.title }}</h3>
-                    <p>{{ article.resume }}</p>
-                </div>
-            </article>
-        </a>
-        {% endfor %}
+    <div class="search-field">
+        <input type="text" id="search-field" placeholder="Rechercher par titre"><svg  xmlns="http://www.w3.org/2000/svg" width="23.414" height="24.414" viewBox="0 0 23.414 24.414">
+        <g id="Groupe_248" data-name="Groupe 248" transform="translate(-559 -341.469)">
+        <g id="Ellipse_1" data-name="Ellipse 1" transform="translate(559 341.469)" fill="none" stroke="#000" stroke-linecap="round" stroke-width="2">
+            <ellipse cx="8.767" cy="8.767" rx="8.767" ry="8.767" stroke="none"/>
+            <ellipse cx="8.767" cy="8.767" rx="7.767" ry="7.767" fill="none"/>
+        </g><path id="Tracé_78" data-name="Tracé 78" d="M12333.379,179.471l-8.019-8.085" transform="translate(-11752.379 184.998)" fill="none" stroke="#000" stroke-linecap="round" stroke-width="2"/>
+        </g></svg>
+    </div>  
+    <div class="container article-display" id="body-content">
+        {{ include('article/_content.html.twig') }}
     </div>
     <div class="paginator">
         {{ knp_pagination_render(articles) }}
