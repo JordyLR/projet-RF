@@ -6,6 +6,7 @@ use App\Entity\Article;
 use App\Entity\Commentaire;
 use App\Entity\User;
 use App\Form\CommentaireType;
+use App\Repository\CommentaireRepository;
 use Doctrine\Persistence\ManagerRegistry;
 use Knp\Component\Pager\PaginatorInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -79,14 +80,15 @@ class ArticleController extends AbstractController
     /**
      * @Route("/{id}/supprimercom", name="delete_commentaire", requirements={ "id" : "\d+" })
      */
-    public function deleteCommentaire($id, ManagerRegistry $doctrine, Request $request): Response {
-        $repositoryCommentaire = $doctrine->getRepository(Commentaire::class);
-        $commentaire = $repositoryCommentaire->find($id);
-        $em = $doctrine->getManager();
-        $em->remove($commentaire);
-        $em->flush();
+    public function deleteCommentaire($id, CommentaireRepository $commentaireRepository, Commentaire $commentaire, Request $request): Response {
+        if ($this->isCsrfTokenValid('delete'.$commentaire->getId(), $request->request->get('_token'))) {
+            $commentaireRepository->remove($commentaire);
+            $this->addFlash(
+                'notice',
+                'Le commentaire a bien été supprimé !'
+            );
+        }
         return $this->redirectToRoute('article_show', [ 'id' => $commentaire->getArticle()->getId()]);
-        // $request->attributes->get('_route')
     }
     /**
      * @Route("/{id}/editercom", name="edit_commentaire", requirements={ "id" : "\d+" })

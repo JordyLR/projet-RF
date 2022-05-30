@@ -136,9 +136,25 @@
         margin: 1rem 0;
         &:nth-child(even) {
             text-align: right;
+            .btn-commentaire {
+                justify-content: right;
+            }
         }
         .pseudo-author {
             font-weight: 800;
+        }
+        .btn-commentaire {
+            display: flex;
+            form {
+                button {
+                    background-color: transparent;
+                    border: none;
+                    cursor: pointer;
+                }
+                &:nth-child(3) {
+                    display: none;
+                }
+            }
         }
     }
     .be-connected {

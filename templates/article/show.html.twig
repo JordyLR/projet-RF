@@ -25,10 +25,19 @@
                 <div class="commentaire-box">
                     <p class='pseudo-author'>{{ commentaire.author.getUserIdentifier }} :</p>
                     <p>{{ commentaire.content }}</p>
-                    {% if commentaire.author == app.user %}
-                        <a href="{{ path('delete_commentaire', { id:commentaire.id }) }}"><ion-icon name="trash"></ion-icon></a>
-                        <a href="{{ path('edit_commentaire', { id:commentaire.id }) }}"><ion-icon name="create"></ion-icon></a>
-                    {% endif %}
+                    <div class="btn-commentaire">
+                        {% if commentaire.author == app.user %}
+                            <a href="{{ path('edit_commentaire', { id:commentaire.id }) }}"><ion-icon name="create"></ion-icon></a>
+                        {% endif %}
+                        {% for role in app.user.roles %}
+                            {% if commentaire.author == app.user or role == 'ROLE_ADMIN' %}
+                                <form method="post" action="{{ path('delete_commentaire', {'id': commentaire.id}) }}" onsubmit="return confirm('Êtes vous sûr de vouloir supprimer ce commentaire ?');">
+                                    <input type="hidden" name="_token" value="{{ csrf_token('delete' ~ commentaire.id) }}">
+                                    <button class="btn delete"><ion-icon name="trash"></ion-icon></button>
+                                </form>
+                            {% endif %}
+                        {% endfor %}   
+                    </div>
                 </div>
             {% endif %}
         {% endfor %}
