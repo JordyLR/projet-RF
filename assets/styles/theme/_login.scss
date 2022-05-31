@@ -1,12 +1,17 @@
 .login-connected {
     text-align: center;
+    line-height: 4rem;
     a {
         color: $primary;
         font-weight: 600;
     }
 }
 .container-login {
-    padding: 18rem 0;
+    border: 1px solid $primary;
+    padding: 5rem 0;
+    border-radius: 5px;
+    margin: 4rem auto;
+    min-height: 50vh;
     .forgot-pass {
         display: flex;
         justify-content: center;
@@ -49,6 +54,11 @@
     }
 }
 .register-form {
+    padding: 5rem 0;
+    border-radius: 5px;
+    margin: 4rem auto;
+    min-height: 50vh;
+    border: 1px solid $primary;
     h1 {
         text-align: center;
         color: $primary;
@@ -83,11 +93,15 @@
     }
 }
 .edit-user {
+    padding: 5rem 0;
+    border-radius: 5px;
+    margin: 4rem auto;
+    min-height: 50vh;
+    border: 1px solid $primary;
     form {
         margin: auto;
         display: flex;
         flex-direction: column;
-        padding: 12rem 0;
         gap: 1rem;
         width: 90%;
         div {
